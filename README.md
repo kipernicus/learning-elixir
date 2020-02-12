@@ -1,6 +1,6 @@
-#Learning Elixir
+# Learning Elixir
 
-##Getting Started
+## Getting Started
 
 1. Read the main page at https://elixir-lang.org/ to get an overview of the language
     * (Optional) https://en.wikipedia.org/wiki/Reactive_programming
