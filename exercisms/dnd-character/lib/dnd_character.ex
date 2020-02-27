@@ -13,13 +13,30 @@ defmodule DndCharacter do
 
   @spec modifier(pos_integer()) :: integer()
   def modifier(score) do
+    Integer.floor_div(score - 10, 2)
+  end
+
+  @spec rollD6 :: pos_integer()
+  def rollD6 do
+    Enum.random(1..6)
   end
 
   @spec ability :: pos_integer()
   def ability do
+    Enum.sum(List.delete_at(Enum.sort([rollD6(), rollD6(), rollD6(), rollD6()]), 0))
   end
 
   @spec character :: t()
   def character do
+    constitution = ability()
+    %DndCharacter{
+      strength: ability(),
+      dexterity: ability(),
+      constitution: constitution,
+      intelligence: ability(),
+      wisdom: ability(),
+      charisma: ability(),
+      hitpoints: 10 + modifier(constitution)
+    }
   end
 end
